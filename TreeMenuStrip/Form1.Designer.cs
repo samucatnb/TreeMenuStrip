@@ -29,6 +29,8 @@
     private void InitializeComponent()
     {
       this.panel1 = new System.Windows.Forms.Panel();
+      this.label3 = new System.Windows.Forms.Label();
+      this.txtNodeTag = new System.Windows.Forms.TextBox();
       this.label2 = new System.Windows.Forms.Label();
       this.label1 = new System.Windows.Forms.Label();
       this.txtNodeName = new System.Windows.Forms.TextBox();
@@ -60,6 +62,8 @@
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.label3);
+      this.panel1.Controls.Add(this.txtNodeTag);
       this.panel1.Controls.Add(this.label2);
       this.panel1.Controls.Add(this.label1);
       this.panel1.Controls.Add(this.txtNodeName);
@@ -72,6 +76,22 @@
       this.panel1.Name = "panel1";
       this.panel1.Size = new System.Drawing.Size(800, 450);
       this.panel1.TabIndex = 0;
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(496, 178);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(124, 15);
+      this.label3.TabIndex = 8;
+      this.label3.Text = "Node Selecionado Tag";
+      // 
+      // txtNodeTag
+      // 
+      this.txtNodeTag.Location = new System.Drawing.Point(492, 196);
+      this.txtNodeTag.Name = "txtNodeTag";
+      this.txtNodeTag.Size = new System.Drawing.Size(253, 23);
+      this.txtNodeTag.TabIndex = 7;
       // 
       // label2
       // 
@@ -112,6 +132,7 @@
       this.treeView1.Size = new System.Drawing.Size(451, 420);
       this.treeView1.TabIndex = 2;
       this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+      this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
       // 
       // button1
       // 
@@ -232,21 +253,21 @@
       // clientesToolStripMenuItem1
       // 
       this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
-      this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+      this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
       this.clientesToolStripMenuItem1.Tag = "31";
       this.clientesToolStripMenuItem1.Text = "Clientes";
       // 
       // produtosToolStripMenuItem1
       // 
       this.produtosToolStripMenuItem1.Name = "produtosToolStripMenuItem1";
-      this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+      this.produtosToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
       this.produtosToolStripMenuItem1.Tag = "32";
       this.produtosToolStripMenuItem1.Text = "Produtos";
       // 
       // pagamentosToolStripMenuItem1
       // 
       this.pagamentosToolStripMenuItem1.Name = "pagamentosToolStripMenuItem1";
-      this.pagamentosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+      this.pagamentosToolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
       this.pagamentosToolStripMenuItem1.Text = "Pagamentos";
       // 
       // ajudaToolStripMenuItem
@@ -261,7 +282,7 @@
       // sobreToolStripMenuItem
       // 
       this.sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-      this.sobreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.sobreToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
       this.sobreToolStripMenuItem.Text = "Sobre";
       // 
       // remotoToolStripMenuItem
@@ -269,13 +290,13 @@
       this.remotoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.anyDeskToolStripMenuItem});
       this.remotoToolStripMenuItem.Name = "remotoToolStripMenuItem";
-      this.remotoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.remotoToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
       this.remotoToolStripMenuItem.Text = "Remoto";
       // 
       // anyDeskToolStripMenuItem
       // 
       this.anyDeskToolStripMenuItem.Name = "anyDeskToolStripMenuItem";
-      this.anyDeskToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+      this.anyDeskToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
       this.anyDeskToolStripMenuItem.Text = "AnyDesk";
       // 
       // Form1
@@ -323,5 +344,7 @@
         private ToolStripMenuItem sobreToolStripMenuItem;
         private ToolStripMenuItem remotoToolStripMenuItem;
         private ToolStripMenuItem anyDeskToolStripMenuItem;
-    }
+    private Label label3;
+    private TextBox txtNodeTag;
+  }
 }
