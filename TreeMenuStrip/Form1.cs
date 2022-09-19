@@ -1,8 +1,11 @@
+using System.Windows.Forms;
+
 namespace TreeMenuStrip
 {
   public partial class Form1 : Form
   {
     ImageList _images;
+    ContextMenuStrip cms;
 
     public Form1()
     {
@@ -12,7 +15,7 @@ namespace TreeMenuStrip
       _images.Images.Add("bloqueado", Image.FromFile(@"C:\WorkspaceGit\praticsistemastanabi\OfficeManager\OfficeManager\img\cancel.png"));
       _images.Images.Add("menu", Image.FromFile(@"C:\WorkspaceGit\praticsistemastanabi\OfficeManager\OfficeManager\img\Menu16x16.png"));
       treeView1.ImageList = _images;
-
+      MontaMenuContext();
     }
 
     private void button1_Click(object sender, EventArgs e)
@@ -52,7 +55,7 @@ namespace TreeMenuStrip
           node.ImageIndex = _images.Images.IndexOfKey("menu");
           node.SelectedImageIndex = _images.Images.IndexOfKey("menu");
           node.Tag = "submenu";
-            
+
         }
         else
         {
@@ -104,5 +107,86 @@ namespace TreeMenuStrip
       }
     }
 
+    private void MontaMenuContext()
+    {
+      ContextMenuStrip cms = new ContextMenuStrip();
+      try
+      {
+        cms.AddItem("Liberar Grupos", Properties.Resources.add_circle_azul_24x24, 0, Keys.F10);
+        cms.AddItem("Liberar Grupos", Properties.Resources.cancelar9_24x24, 1, Keys.F11);
+        cms.PersonalizarContextMenu(Font.FontFamily, 10);
+
+
+        treeView1.ContextMenuStrip = cms;
+        //Liga o evento ItemClicked ao  método MenuOpcoes_ItemClicked (que irá executar a ação do evento)
+        treeView1.ContextMenuStrip.ItemClicked += new ToolStripItemClickedEventHandler(MenuContext_ItemClicked);
+
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show(ex.Message);
+      }
+      finally
+      {
+
+      }
+
+    }
+
+    //Evento clique dos itens do Menu Opções
+    private void MenuContext_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+    {
+      treeView1.ContextMenuStrip.Hide();
+      ToolStripItem item = e.ClickedItem;
+      switch (item.MergeIndex)
+      {
+        case 0:
+          LiberarGrupos(treeView1.SelectedNode.Nodes.Cast<TreeNode>());
+          break;
+        case 1:
+          BloquearGrupos(treeView1.SelectedNode.Nodes.Cast<TreeNode>());
+          break;
+        default:
+          break;
+      }
+    }
+
+    private void BloquearGrupos(IEnumerable<TreeNode> nodes)
+    {
+
+      foreach (var item in nodes)
+      {
+        if (item.Tag == "item")
+        {
+          item.Checked = false;
+          item.ImageIndex = _images.Images.IndexOfKey("bloqueado");
+          item.SelectedImageIndex = _images.Images.IndexOfKey("bloqueado");
+          treeView1.SelectedNode = item;
+        }
+        else
+        {
+          BloquearGrupos(item.Nodes.Cast<TreeNode>());
+        }
+      }
+
+    }
+
+    private void LiberarGrupos(IEnumerable<TreeNode> nodes)
+    {
+      foreach (var item in nodes)
+      {
+        if (item.Tag == "item")
+        {
+          item.Checked = true;
+          item.ImageIndex = _images.Images.IndexOfKey("liberado");
+          item.SelectedImageIndex = _images.Images.IndexOfKey("liberado");
+          treeView1.SelectedNode = item;
+        }
+        else
+        {
+          LiberarGrupos(item.Nodes.Cast<TreeNode>());
+        }
+      }
+    }
   }
 }
