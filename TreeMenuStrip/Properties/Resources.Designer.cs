@@ -63,9 +63,9 @@ namespace TreeMenuStrip.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_circle_azul_24x24 {
+        internal static System.Drawing.Bitmap desligar24x24 {
             get {
-                object obj = ResourceManager.GetObject("add_circle_azul_24x24", resourceCulture);
+                object obj = ResourceManager.GetObject("desligar24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace TreeMenuStrip.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cancelar9_24x24 {
+        internal static System.Drawing.Bitmap ligar24x24 {
             get {
-                object obj = ResourceManager.GetObject("cancelar9_24x24", resourceCulture);
+                object obj = ResourceManager.GetObject("ligar24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace TreeMenuStrip.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Impressora_verde_24x24 {
+        internal static System.Drawing.Bitmap maximizar24x24 {
             get {
-                object obj = ResourceManager.GetObject("Impressora_verde_24x24", resourceCulture);
+                object obj = ResourceManager.GetObject("maximizar24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimizar24x24 {
+            get {
+                object obj = ResourceManager.GetObject("minimizar24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

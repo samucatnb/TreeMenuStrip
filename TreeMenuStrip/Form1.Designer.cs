@@ -56,12 +56,16 @@
       this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.remotoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.anyDeskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.label4 = new System.Windows.Forms.Label();
+      this.txtNodeChecked = new System.Windows.Forms.TextBox();
       this.panel1.SuspendLayout();
       this.menuStrip1.SuspendLayout();
       this.SuspendLayout();
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.label4);
+      this.panel1.Controls.Add(this.txtNodeChecked);
       this.panel1.Controls.Add(this.label3);
       this.panel1.Controls.Add(this.txtNodeTag);
       this.panel1.Controls.Add(this.label2);
@@ -132,6 +136,7 @@
       this.treeView1.Size = new System.Drawing.Size(451, 420);
       this.treeView1.TabIndex = 2;
       this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+      this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
       this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
       // 
       // button1
@@ -299,6 +304,22 @@
       this.anyDeskToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
       this.anyDeskToolStripMenuItem.Text = "AnyDesk";
       // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(496, 246);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(85, 15);
+      this.label4.TabIndex = 10;
+      this.label4.Text = "Node Checked";
+      // 
+      // txtNodeChecked
+      // 
+      this.txtNodeChecked.Location = new System.Drawing.Point(492, 264);
+      this.txtNodeChecked.Name = "txtNodeChecked";
+      this.txtNodeChecked.Size = new System.Drawing.Size(253, 23);
+      this.txtNodeChecked.TabIndex = 9;
+      // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -346,5 +367,7 @@
         private ToolStripMenuItem anyDeskToolStripMenuItem;
     private Label label3;
     private TextBox txtNodeTag;
+    private Label label4;
+    private TextBox txtNodeChecked;
   }
 }

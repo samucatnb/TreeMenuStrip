@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using TreeMenuStrip.Properties;
 
 namespace TreeMenuStrip
 {
@@ -81,6 +82,7 @@ namespace TreeMenuStrip
       txtNodeText.Text = e.Node.Text;
       txtNodeName.Text = e.Node.Name;
       txtNodeTag.Text = e.Node.Tag.ToString();
+      txtNodeChecked.Text = e.Node.Checked.ToString();
     }
 
     private void treeView1_DoubleClick(object sender, EventArgs e)
@@ -112,8 +114,10 @@ namespace TreeMenuStrip
       ContextMenuStrip cms = new ContextMenuStrip();
       try
       {
-        cms.AddItem("Liberar Grupos", Properties.Resources.add_circle_azul_24x24, 0, Keys.F10);
-        cms.AddItem("Liberar Grupos", Properties.Resources.cancelar9_24x24, 1, Keys.F11);
+        cms.AddItem("Liberar Grupo", Properties.Resources.ligar24x24, 0, Keys.F10);
+        cms.AddItem("Bloquear Grupo", Properties.Resources.desligar24x24, 1, Keys.F11);
+        cms.AddItem("Expandir Tudo", Properties.Resources.maximizar24x24, 2, Keys.F11);
+        cms.AddItem("Recolher Tudo", Properties.Resources.minimizar24x24, 3, Keys.F11);
         cms.PersonalizarContextMenu(Font.FontFamily, 10);
 
 
@@ -137,6 +141,7 @@ namespace TreeMenuStrip
     private void MenuContext_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
     {
       treeView1.ContextMenuStrip.Hide();
+      if (treeView1.SelectedNode == null || treeView1.SelectedNode.GetNodeCount(true) == 0) return;
       ToolStripItem item = e.ClickedItem;
       switch (item.MergeIndex)
       {
@@ -145,6 +150,12 @@ namespace TreeMenuStrip
           break;
         case 1:
           BloquearGrupos(treeView1.SelectedNode.Nodes.Cast<TreeNode>());
+          break;
+        case 2:
+          treeView1.ExpandAll();
+          break;
+        case 3:
+          treeView1.CollapseAll();
           break;
         default:
           break;
@@ -187,6 +198,16 @@ namespace TreeMenuStrip
           LiberarGrupos(item.Nodes.Cast<TreeNode>());
         }
       }
+    }
+
+    /// <summary>
+    /// evento adicionado para que ao clicar com o botão direito do mouse também funcione a seleção
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+    {
+      treeView1.SelectedNode = e.Node;
     }
   }
 }
